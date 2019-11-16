@@ -1,6 +1,6 @@
 # Provided, don't edit
 require 'directors_database'
-
+pp directors_database
 # A method we're giving you. This "flattens"  Arrays of Arrays so: [[1,2],
 # [3,4,5], [6]] => [1,2,3,4,5,6].
 
@@ -48,6 +48,13 @@ def movies_with_director_key(name, movies_collection)
   # Array of Hashes where each Hash represents a movie; however, they should all have a
   # :director_name key. This addition can be done by using the provided
   # movie_with_director_name method
+  result = []
+  movies_index = 0
+  while movies_index < movies_collection.length do
+    result << movie_with_director_name(name, movies_collection[movies_index])
+    movies_index += 1
+  end
+  result
 end
 
 
@@ -63,6 +70,15 @@ def gross_per_studio(collection)
   #
   # Hash whose keys are the studio names and whose values are the sum
   # total of all the worldwide_gross numbers for every movie in the input Hash
+  final_hash = {}
+  studio_total = 0
+  movies_index = 0
+  while movies_index < collection.length do
+    studio_total += collection[movies_index][:worldwide_gross]
+    final_hash[:studio] = studio_total
+    movies_index += 1
+  end
+  final_hash
 end
 
 def movies_with_directors_set(source)
