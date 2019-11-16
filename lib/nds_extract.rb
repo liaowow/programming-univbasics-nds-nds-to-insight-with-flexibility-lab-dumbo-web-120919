@@ -99,7 +99,7 @@ def movies_with_directors_set(source)
   source_index = 0
   while source_index < source.length do
     current_director = source[source_index][:name]
-    result << {:current_director => source[source_index][:movies]}
+    result << {current_director => source[source_index][:movies]}
     source_index += 1
   end
   result
